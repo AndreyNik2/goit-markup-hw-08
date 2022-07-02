@@ -18,13 +18,28 @@
     gap: 30px;
 }
 
+.clients__item {
+    display: block;
+    width: calc((100% - 60px)/2);
+    height: 92px;
+
+    @include tablet {
+        width: ((100% - 90px)/3);
+    }
+
+    @include desctop {
+        width: calc((100% - 180px)/6);
+    }
+    
+}
+
 
 
 .clients__link{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc((480px - 2*30px)/2);
+    width: calc((100% - 60px)/2);
     height: 92px;
     fill: #AFB1B8;
     border: 1px solid #AFB1B8;
@@ -37,11 +52,11 @@
     }
 
     @include tablet {
-        width: calc((768px - 3*30px)/3);
+        width: calc((100% - 90px)/3);
     }
 
     @include desctop {
-        width: calc((1200px - 6*30px)/6);
+        width: calc((100% - 180px)/6);
     }
 }
 
