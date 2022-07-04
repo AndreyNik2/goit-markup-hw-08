@@ -5,6 +5,7 @@
     position: fixed;
     top: 0;
     transition: opacity 250ms, visibility 250ms;
+
 }
 
 .backdrop.is-hidden .modal{
@@ -16,8 +17,8 @@
 .modal{
     box-sizing: border-box;
     padding: 40px;
-    width: 528px;
-    min-height: 581px;
+    width: calc(100% - 30px);
+    min-height: calc(100% - 187px);
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 
     0px 1px 3px rgba(0, 0, 0, 0.12), 
@@ -30,16 +31,28 @@
     transform: translate(-50%, -50%) scale(1);
     transition: transform 250ms;
 
+    @include tablet {
+        width: 460px;
+        min-height: 609px;
+    }
+
+    @include desctop {
+        width: 528px;
+        min-height: 581px;
+    }
+
     &__title{
         color: var(--primary-text-color);
-        font-family: 'Roboto';
-        font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 1.15;
+        line-height: 1.5;
         text-align: center;
         letter-spacing: 0.03em;
         margin-bottom: 12px;
+
+        @include desctop {
+            line-height: 1.15;
+        }
     }
 
     &__field {
@@ -50,7 +63,7 @@
         display: block;
         margin-bottom: 4px;
         font-size: 12px;
-        line-height: 1.14;
+        line-height: 1.17;
         letter-spacing: 0.01em;
         color: #757575;
     }
@@ -114,7 +127,6 @@
     }
 
     &__privacy-wraper {
-        margin-left: 14px;
         box-sizing: border-box;
         width: 16px;
         height: 15px;
@@ -124,13 +136,21 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+
+        @include desctop {
+            margin-left: 14px;
+        }
     }
 
     &__check-label {
-        font-size: 14px;
-        line-height: 1.71;
+        font-size: 12px;
+        line-height: 1.17;
         letter-spacing: 0.03em;
         color: #757575;
+
+        @include desctop {
+            font-size: 14px;
+        }
     }
     
     &__privacy-icon{
@@ -138,10 +158,14 @@
     }
     
     &__link-privacy {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.71;
         letter-spacing: 0.03em;
         color:var(--active-color);
+
+        @include desctop {
+            font-size: 14px;
+        }
     }
 
     &__submit-btn{
