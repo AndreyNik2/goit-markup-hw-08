@@ -1,5 +1,6 @@
 .header{
     border-bottom:1px solid #ECECEC ;
+    position: relative;
 }
 
 .navigation{
@@ -7,23 +8,131 @@
     align-items: center;
 }
 
-.nav{
-    display: flex;
-    margin-left: 93px;
+.menu-button {
+    z-index: 3;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.menu-container {
     
-    &__item{
-        margin-right: 50px;
+    background-color: #ffffff;
+    
+
+    @media screen and (max-width: 767px) {
+        padding: 48px 40px;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        flex-wrap: wrap;
+        align-content: space-between;
+        overflow-y: scroll;
+        position: fixed;
+        z-index: 2;
+
+        &.is-open {
+            display: flex;
+            
+            
+        }
+    }
+
+
+
+    @include tablet {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+    }
+
+}
+
+.menu-button .icon-cross {
+    display: none;
+}
+
+.menu-button.is-open .icon-cross {
+    display: block;
+}
+
+.menu-button.is-open .icon-menu {
+    display: none;
+}
+
+.nav-wrapper {
+    @include mobile {
+        width: 100%;
+    }
+
+    @include tablet {
+        display: inline-block;
+        width: auto;
+    }
+}
+
+.nav{
+
+    @include tablet {
+        display: flex;
+    }
+
+    &__item {
+
+        @include tablet {
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+    }
+    
+    
+    &__item:first-child{
+        
+        @include tablet {
+            margin-left: 88px;
+            margin-right: 50px;
+        }
+
+        @include desctop {
+            margin-left: 93px;
+        }
     }
 
     &__item:last-child{
-        margin-right: 0;
+
+        @include tablet {
+            margin-left: 50px;
+            margin-right: 84px;
+        }
+
+        @include desctop {
+            margin-right: 305px;
+        }
+    }
+
+    &__item:not(:last-child) {
+        margin-bottom: 32px;
+
+        @include tablet {
+            margin-bottom: 0;
+            
+        }
     }
 
     &__link{
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 1.14;
-        letter-spacing: 0.02em;
+        
     }
 
     
@@ -32,11 +141,24 @@
 
 
 .nav__link{
-    display: block;
-    padding-top: 32px;
-    padding-bottom: 32px;
+    
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.18;
+    text-align: left;
+    letter-spacing: 0.02em;
     color: var(--primary-text-color);
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include tablet {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.14;
+    }
+
+    
+    
+    
     
     &:hover, &:focus{
         color: var(--active-color);
@@ -45,8 +167,12 @@
 
     &--current{
         color: #188ce8;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        
         position: relative;
+
+        @include desctop {
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
     }
 
     &--current::after{
@@ -55,35 +181,86 @@
         width: 100%;
         position: absolute;
         left: 0;
-        bottom: -3px;
+        bottom: -33px;
         border-radius: 2px;
         display: block;
         background-color: #2196F3;
+
+        @media screen and(max-width: 767px){
+            background-color: transparent;
+        }
     }
 }
 
+.contactus-wrapper {
+    @include mobile {
+        width: 100%;
+    }
+
+    @include tablet {
+        width: auto;
+        display: inline-block;
+    }
+}
 
 .contactus{
-    display: flex;
-    margin-left: auto;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.14;
-    letter-spacing: 0.02em;
+
+    @include desctop {
+        display: flex;
+    }
+    
 
     &__item{
         display: flex;
+
+        &:first-child {
+            font-weight: 500;
+            font-size: 34px;
+            line-height: 1.18;
+            letter-spacing: 0.02em;
+            margin-bottom: 32px;
+            color: #2196F3;
+
+            @include tablet {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 1.17;
+                color: #757575;
+                margin-bottom: 10px;
+            }
+
+            @include desctop {
+                margin-bottom: 0;
+                margin-right: 30px;
+            }
+            
+        }
+
+        &:last-child {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1.17;
+            letter-spacing: 0.02em;
+            color: #757575;
+
+            @include tablet {
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 1.17;
+            }
+        }
+
+            
     }
 
     &__link{
-        padding-top: 32px;
-        padding-bottom: 32px;
-        color: var(--grey-text-color);
+        color: inherit;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
+
 
     &__link:hover, &__link:focus{
         color: var(--active-color);
@@ -91,24 +268,32 @@
 }
 
 
-.contactus .contactus__item + .contactus__item{
-    margin-left: 50px;
-}
+
 
 
 .icon-envelope{
+    fill: #757575;
     width: 20px;
     height: 16px;
     margin-right: 10px;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (max-width: 767px){
+        display: none;
+    }
 }
 
 
 .icon-smartphone{
+    fill: #757575;
     width: 16px;
     height: 22px;
     margin-right: 10px;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 
@@ -118,4 +303,45 @@
 .contactus__link:focus .icon-smartphone
 {
     fill: #2196F3;
+}
+
+
+.header-soc__wrapper {
+    @include mobile {
+        width: 100%;
+
+        @include tablet {
+            display: none;
+        }
+    }
+    
+}
+
+.header-soc {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto 0;
+
+    
+
+
+    &__link {
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.22;
+        letter-spacing: 0.02em;
+        color: #2196F3;
+    }
+
+    &__item:not(:last-child) {
+        border-right: 1px solid rgba(33, 33, 33, 0.2);
+        padding-right: 10px;
+    }
+
+    &__item:not(:first-child) {
+        padding-left: 10px;
+    }
+
+
 }
